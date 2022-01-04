@@ -1,0 +1,50 @@
+//Problem Link
+https://www.hackerearth.com/practice/math/number-theory/primality-tests/practice-problems/algorithm/monks-problem-ffeebf8a/
+
+
+//Complete Function isPrime , solve Function and declare a Global boolean Array prime
+// Using sieve of eratosthenes Algorithm
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool prime[1000001];
+
+void isPrime(){
+    memset(prime, true, sizeof(prime));
+ 
+    for (int p = 2; p * p <= 1000000; p++)
+    {
+        if (prime[p] == true)
+        {
+            for (int i = p * p; i <= 1000000; i += p)
+                prime[i] = false;
+        }
+    }
+}
+
+string solve (int N) {
+   // Your code goes here
+   if(prime[N])
+    return "No";
+   else
+    return "Yes";
+}
+
+int main() {
+    isPrime();
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int T;
+    cin >> T;
+    for(int t_i=0; t_i<T; t_i++)
+    {
+        int N;
+        cin >> N;
+
+        string out_;
+        out_ = solve(N);
+        cout << out_;
+        cout << "\n";
+    }
+}
