@@ -1,0 +1,19 @@
+//Problem Link
+https://leetcode.com/problems/palindrome-number/?fbclid=IwAR08_-eX5dxiu4Ta6yCih18m_UQdrouIshW3Q-m3de7hlwjddV_ku8Rx7Rs
+
+//Complete Function
+bool isPalindrome(int x) {
+        long temp = x;
+        long rev = 0;
+        
+        while(temp > 0)
+        {
+            rev = rev * 10 + temp%10;
+            temp = temp/10;
+        }
+        
+        if(rev == x)
+            return true;
+        else
+            return false;
+    }
