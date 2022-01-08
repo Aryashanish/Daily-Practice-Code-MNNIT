@@ -1,0 +1,38 @@
+//Question Link
+https://www.hackerrank.com/contests/anticoding/challenges/aditya-and-modulo?fbclid=IwAR3vDwJJlUPM-OBOHayYtP-BKsJ0SoTjUW4oEjpd_klpvMNfXHva2b1HKtA
+
+//My Submission Code
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    
+    int tern;
+    cin>>tern;
+    while(tern--){
+        int size , M;
+        cin>>size>>M;
+        vector<int> v(M,0);
+        int x;
+        for(int i=0; i<size; i++){
+            cin>>x;
+            v[x%M]++;
+        }
+        int dist = 0 , uniq = 0;
+        for(int i=0; i<M; i++){
+            if(v[i] > 0)
+                dist++;
+            if(v[i] == 1)
+                uniq++;
+        }
+        
+        cout<<dist<<endl;
+        cout<<uniq<<endl;
+    }
+    return 0;
+}
