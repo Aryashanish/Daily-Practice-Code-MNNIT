@@ -1,0 +1,21 @@
+//Problem Link
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/?fbclid=IwAR0OZrSoLwsu5_-ga89iLkTiAZYZwogzJhjPXjdkrPSCJ6ihJPh1TvHmK0Y
+
+//Complete Function
+vector<int> twoSum(vector<int>& numbers, int target) {
+        vector<int> index;
+        int i = 0;
+        int j = numbers.size()-1;
+        while(true){
+            if(numbers[i] + numbers[j] > target)
+                j--;
+            else if(numbers[i] + numbers[j] < target)
+                i++;
+            else{
+                index.push_back(i+1);
+                index.push_back(j+1);
+                break;
+            }
+        }
+        return index;
+    }
