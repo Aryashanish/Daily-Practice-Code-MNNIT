@@ -1,0 +1,12 @@
+//Probem Link
+https://leetcode.com/problems/find-smallest-letter-greater-than-target/?fbclid=IwAR3CasSEWbtIV78wKrJpMnhB1epQVmZtridRWsrRYOfXL7-XfCpN9Luuutc
+
+// Complete Method of Class Solution
+char nextGreatestLetter(vector<char>& letters, char target) {
+        for(int i=0; i<letters.size(); i++){
+            if(letters[i] > target){
+                return letters[i];   
+            }
+        }
+        return letters[0];
+    }
