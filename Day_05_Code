@@ -1,0 +1,32 @@
+//Problem Link
+https://www.codechef.com/problems/AMSGAME1?fbclid=IwAR0AdIjhUU6qPDug2oxODaJmX1lSk9clcAAvpdKkjSLqFbkGVU7jHNRmeRU
+
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b){
+    if(b == 0)
+        return a;
+    return gcd(b, a%b);
+}
+
+int main() {
+	// your code goes here
+	int term;
+	cin>>term;
+	while(term--){
+	    int size;
+	    cin>>size;
+	    int *arr = new int[size];
+	    for(int i=0; i<size; i++)
+	        cin>>arr[i];
+	        
+	    int two_gcd = arr[0];
+	    for(int i=0; i<size; i++)
+	        two_gcd = gcd(two_gcd , arr[i]);
+	        
+	    cout<<two_gcd<<endl;
+	}
+	
+	return 0;
+}
