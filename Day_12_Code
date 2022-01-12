@@ -1,0 +1,26 @@
+//Problem Link
+https://leetcode.com/problems/valid-palindrome/?fbclid=IwAR1uuT85E-HjGNh3ooKPE1qb5EraDfHAD5a6HGg5LNIKeYiGd8Yt-0SDNCk
+
+//Complete Function
+//Achieve ---> 100% faster than Other Submission code
+
+bool isPalindrome(string s) {
+        for(int i=0; i<s.length(); i++){
+            if(s[i] >= 65 && s[i] <= 90)
+                s[i] = s[i] + 32;
+        }
+        int st = 0;
+        int l = s.length()-1;
+        while(st<l){
+            if(!(s[st] >= 'a' && s[st] <= 'z') && !(s[st]>='0' && s[st]<='9') )
+                st++;
+            else if(!(s[l] >= 'a' && s[l] <= 'z') && !(s[l]>='0' && s[l]<='9'))
+                l--;
+            else if(s[st] != s[l])
+                return false;
+            else{
+                st++;
+                l--;
+            }
+        }
+        return true;
