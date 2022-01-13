@@ -1,0 +1,43 @@
+//Problem Link
+https://leetcode.com/problems/merge-sorted-array/?fbclid=IwAR06_HSMoNhvDZ-_Cl7hhgq9MXEEtN4IzynjLDGfJOjW5L7Xlat4rtzkBWE
+
+
+//Complete Function
+//Time Complexity - O(M+N)
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int> v;
+        
+        int i=0;
+        int j=0;
+        int k=0;
+        int arr[m+n];
+        
+        while(i<m && j<n)
+        {
+            if(nums1[i] < nums2[j])
+            {
+                arr[k] = nums1[i];
+                i++ , k++;
+            }
+            else
+            {
+                arr[k] = nums2[j];
+                j++ , k++;
+            }
+        }
+        
+        for(;i<m; i++)
+        {
+            arr[k] = nums1[i];
+            k++;
+        }
+        
+        for(;j<n; j++)
+        {
+            arr[k] = nums2[j];
+            k++;
+        }
+        
+        for(int x=0 ;x<(m+n); x++)
+            nums1[x] = arr[x];
+    }
