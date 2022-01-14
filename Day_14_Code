@@ -1,0 +1,10 @@
+//Problem Link
+https://leetcode.com/problems/sqrtx/?fbclid=IwAR0jmfpsqZbD9e3CczhYAJudfn18qZTnybyDwDhLtlnfLgr8JIYdnM0ZYDI
+
+//Complete Method of class Solution
+class Solution {
+public:
+    int mySqrt(int x) {
+        
+    }
+};
