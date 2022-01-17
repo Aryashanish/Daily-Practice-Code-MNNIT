@@ -1,0 +1,21 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1/?fbclid=IwAR3L9lPA60dy-yUgO1Ijc3vJO679NMy3ZFLxq6cuZCHK_7qZ8YX4r_7JU9k
+
+//Complete Method of Class Solution
+class Solution{
+    //Function to find the leaders in the array.
+    public:
+    vector<int> leaders(int a[], int n){
+        // Code here
+        int m = INT_MIN;
+        vector<int> v;
+        for(int i=n-1; i>=0; i--){
+            if(a[i] >= m){
+                v.push_back(a[i]);
+            }
+            m = max(m,a[i]);
+        }
+        reverse(v.begin(),v.end());
+        return v;
+    }
+};
