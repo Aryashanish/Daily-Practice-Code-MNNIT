@@ -1,0 +1,21 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/equilibrium-point-1587115620/1?fbclid=IwAR1GoSaIqQ2RpZmZLlvYxCDubP3H1jfLaY7H8UgXuNbwl1AMaG_fqyZZdx8#
+
+//Complete Method of class
+int equilibriumPoint(long long a[], int n) {
+    
+        // Your code here
+        int sum = 0;
+        int lsum = 0;
+        for(int i=0; i<n; i++)
+            sum += a[i];
+            
+        for(int j = 0; j<n; j++){
+            if(lsum == sum - a[j])
+                return j+1;
+            
+            sum -= a[j];
+            lsum += a[j];
+        }
+        return -1;
+    }
