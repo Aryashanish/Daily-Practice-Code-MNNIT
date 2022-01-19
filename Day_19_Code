@@ -1,0 +1,27 @@
+//Problem Link
+https://leetcode.com/problems/majority-element/?fbclid=IwAR3Nxe8w9dKz-S173mDe3j45jEf_jgiGr4jzkVFweAr5GsHH91dhXi_LMYg
+
+//Complete Method of class Solution
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        if(n==1)return nums[0];
+        sort(nums.begin(),nums.end());
+        int count;
+        int temp = nums[0];
+        int i = 1;
+        while(i<n){
+            count = 1;
+            while(i<n && (nums[i-1] == nums[i])){
+                count++;
+                i++;
+            } 
+            if(count > (n/2))
+                return nums[i-1];
+            
+            i++;
+        }
+        return -1;
+    }
+};
