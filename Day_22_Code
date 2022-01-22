@@ -1,0 +1,15 @@
+//Problem Link
+https://leetcode.com/problems/complement-of-base-10-integer/?fbclid=IwAR0l6qevraA5l4gCiui37rkzKcHtn7Tn7HVoLfL3wnZR7egTAOhnsIWCehU
+
+//Complete Method
+class Solution {
+public:
+    int bitwiseComplement(int n) {
+        int r = 1;
+        while(pow(2,r) <= n){
+            r++;
+        }
+        int x = pow(2,r)-1;
+        return n^x;
+    }
+};
