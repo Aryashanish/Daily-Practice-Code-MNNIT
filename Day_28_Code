@@ -1,0 +1,26 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1?fbclid=IwAR0gvWWDzF1zH1jF5TP9-R_PRl6PFldn6ihFg5fHpUx_UqFhR6Z8hMQHhAA#
+
+//Complete Method of Solution
+int *findTwoElement(int *arr, int n) {
+        // code here
+        int s =n+1;
+        int hash[s];
+        for(int i=0; i<s; i++)
+            hash[i] = 0;
+            
+        for(int j=0; j<n; j++)
+            hash[arr[j]]++;
+            
+        int repeat = 0;
+        int missing = 0;
+        for(int i=1; i<s; i++){
+            if(hash[i] > 1)
+                repeat = i;
+            if(hash[i] == 0)
+                missing = i;
+        }
+        arr[0] = repeat;
+        arr[1] = missing;
+        return arr;
+    }
