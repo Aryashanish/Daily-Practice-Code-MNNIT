@@ -1,0 +1,43 @@
+1 Problem
+Problem Link - https://leetcode.com/problems/linked-list-cycle/?fbclid=IwAR1Gsha7Nh5qQw_UsymVEFbv9VASBh2MXCrDeioq5jwPtBUvwshjNmFjmgk
+
+//Code
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head == NULL || head->next == NULL) 
+            return false;
+        
+        ListNode *p , *q;
+        p = q = head;
+        do{
+            p = p->next;
+            q = q->next;
+            q = q != NULL ? q->next : NULL;
+        }while(p && q && p!=q);
+        
+        if(p==q)
+            return true;
+        else
+            return false;
+    }
+};
+
+2 Problem
+Problem Link - https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1?fbclid=IwAR3vA2uiHZOKXCL41rVkiWiibwaSJNXvejkNvmVAR2yX8p_qrIiW0UyZTFE
+
+//Code
+long long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        int maxFar = INT_MIN;
+        int maxEnd = 0;
+        for(int i=0; i<n; i++){
+            maxEnd = maxEnd + arr[i];
+            if(maxEnd > maxFar)
+                maxFar = maxEnd;
+            if(maxEnd < 0)
+                maxEnd = 0;
+        }
+        return maxFar;
+    }
