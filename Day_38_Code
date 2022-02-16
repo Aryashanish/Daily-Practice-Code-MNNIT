@@ -1,0 +1,49 @@
+Q1 . Tower of Hanoi
+//Problem Link
+https://practice.geeksforgeeks.org/problems/tower-of-hanoi-1587115621/1/?fbclid=IwAR3S-9Df0RLuBpO-NmlNsphoVJYLMDWSkdO75khWecW4e31C1vL0sknMnhk#
+
+//Code
+long long toh(int N, int from, int to, int aux) {
+        // Your code here
+        if(N == 0)
+            return 0;
+        
+        toh(N-1 , from , aux , to);
+        cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+        toh(N-1 , aux , to , from);
+        return pow(2,N)-1;
+    }
+    
+Q2 . Problem Link
+https://leetcode.com/problems/product-of-array-except-self/?fbclid=IwAR0JhW_Jn6bQigF3cBoR-S8z67m7nFPaToZNBK9e8i7VL3WSuHCnb9tlDCc
+
+//Code
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int pro = 1;
+        int noZero = 0;
+        int zeroPos = 0;
+        for(int i=0; i<nums.size(); i++){
+            if(nums[i] == 0){
+                noZero++;
+                zeroPos = i;
+            }
+            else
+                pro = pro * nums[i]; 
+        }
+        
+        vector<int>ans(nums.size(),0);
+        if(noZero == 0){
+            for(int i=0; i<nums.size(); i++)
+                ans[i] = pro/nums[i];
+            
+            return ans;
+        }
+        if(noZero == 1){
+            ans[zeroPos] = pro;
+            return ans;
+        }
+        return ans;
+    }
+};
