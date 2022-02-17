@@ -1,0 +1,61 @@
+Q1 Problem Link
+https://leetcode.com/problems/set-matrix-zeroes/?fbclid=IwAR0IV3KNm2yg1Asc3q_MGFJEFUkZ8LARenyKhSc8PW-SiE4TWwEhUSF1Z7o
+
+//Code
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int RowLength=matrix.length;
+        int ColLength=matrix[0].length;
+        
+        //To save the row and col which contains 0
+        ArrayList<Integer> row = new ArrayList<Integer>();
+        ArrayList<Integer> col = new ArrayList<Integer>();
+        
+        for(int i=0;i<RowLength;i++){
+            for(int j=0;j<ColLength;j++){
+                if(matrix[i][j] == 0){
+                    row.add(i);
+                    col.add(j);
+                }
+            }
+        }
+        
+        for(int i=0;i<RowLength;i++){
+            for(int j=0;j<ColLength;j++){
+                if(row.contains(i) || col.contains(j)){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+    }
+}
+
+2Q Problem Link
+https://leetcode.com/problems/swap-nodes-in-pairs/?fbclid=IwAR0IV3KNm2yg1Asc3q_MGFJEFUkZ8LARenyKhSc8PW-SiE4TWwEhUSF1Z7o
+
+//Code
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if(head == NULL) 
+            return head;
+        
+        ListNode *p = head;
+        ListNode *q = head->next;
+        int temp = 0;
+        while(q != NULL){
+            temp = p->val;
+            p->val = q->val;
+            q->val = temp;
+            if(q->next != NULL)
+                p = q->next;
+            else
+                break;
+            if(p->next != NULL)
+                q = p->next;
+            else 
+                break;
+        }
+        return head;
+    }
+};
