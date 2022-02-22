@@ -1,0 +1,31 @@
+//Problem Link
+https://leetcode.com/problems/keep-multiplying-found-values-by-two/?fbclid=IwAR2Y3jFqXm9_CLJNYguaeOXb7sQMN-E0p_gA_lwNUM69yo9qScD_LRCZUDA
+
+//Code--
+class Solution {
+public:
+    int findFinalValue(vector<int>& nums, int original) {
+        sort(nums.begin() , nums.end());
+        while(binary_search(nums.begin(),nums.end(),original)){
+            original = original*2;
+        }
+        return original;
+    }
+};
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/47e5aa3f32aee9e0405f04960f37c8a562d96a2f/1?fbclid=IwAR3iYf_CjKhm4pjru5p76u-BvQnSTK3fHgcMHldce_f3YQvlMoJCLtBqNac#
+
+//Code--
+class Solution {
+  public:
+    void prank(long long a[], int n){
+        // code here
+        for(int i=0; i<n; i++)
+            a[i] = a[i] + (a[a[i]]%n)*n;
+            
+        for(int i=0; i<n; i++)
+            a[i] = a[i]/n;
+    }
+};
