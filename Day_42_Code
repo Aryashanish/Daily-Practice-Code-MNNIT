@@ -1,0 +1,81 @@
+//Problem Link
+https://leetcode.com/problems/magnetic-force-between-two-balls/?fbclid=IwAR1tA5EjTBPi3p76e2v3ZQVo9z_fXGuruMaTehQnzDnfzLVDELDBe_Cp5cg
+
+//Code--
+class Solution {
+public:
+    bool ispossible(vector<int>& pos,int mid,int m){
+        int cm = 1;
+        int k = pos[0];
+        for(int i=0; i<pos.size(); i++){
+            if((pos[i] - k) >= mid){
+                cm++;
+                if(cm == m)
+                    return true;
+                k = pos[i];
+            }
+        }
+        return false;
+    }
+    int maxDistance(vector<int>& position, int m) {
+        sort(position.begin() , position.end());
+        int l = 1;
+        int n = position.size();
+        int h = position[n-1]-l;
+        int mid;
+        while(l <= h){
+            mid = l + (h-l)/2;
+            if(ispossible(position,mid,m))
+                l = mid+1;
+            else
+                h = mid-1;
+        }
+        return h;
+    }
+};
+
+
+//Problem Link
+https://leetcode.com/problems/merge-two-sorted-lists/?fbclid=IwAR3N94KYYJ4VB_KGC-dbGG_KwV8-qkVp51FRYCiGci3RFSIk6puipNd-BTc
+
+//Code--
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1 == NULL)
+            return list2;
+        if(list2 == NULL)
+            return list1;
+        ListNode *p = list1;
+        ListNode *q = list2;
+        ListNode *h;
+        if(p->val < q->val){
+            h = new ListNode(p->val);
+            p = p->next;
+        }
+        else{
+            h = new ListNode(q->val);
+            q = q->next;
+        }
+        ListNode *t = h;
+        while(p && q){
+            if(p->val < q->val){
+                t->next = p;
+                t = p;
+                p = p->next;
+            }
+            else{
+                t->next = q;
+                t = q;
+                q = q->next;
+            }
+        }
+        if(p == NULL && q != NULL){
+            t->next = q;
+        }
+        if(p != NULL && q == NULL){
+            t->next = p;
+        }
+        return h;
+    }
+};
