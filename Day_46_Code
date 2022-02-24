@@ -1,0 +1,69 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1/#
+
+//Code
+class Solution{
+  public:
+    //Function to check whether the list is palindrome.
+    bool isPalindrome(Node *head)
+    {
+        //Your code here
+        int num = 0;
+        struct Node *p = head;
+        while(p){
+            num = num*10 + p->data;
+            p = p->next;
+        }
+        
+        int rev = 0;
+        int temp = num;
+        while(temp > 0){
+            rev = rev*10 + temp%10;
+            temp = temp/10;
+        }
+        
+        if(rev == num)
+            return true;
+        else
+            return false;
+    }
+};
+
+
+//Problem link
+https://leetcode.com/problems/add-binary/
+
+//Code
+string addBinary(string a, string b) {
+//         long int x = dec(a);
+//         long int y = dec(b);
+//         long int add = x+y;
+//         // cout<<x<<" "<<y<<" "<<add;
+//         if(add == 0)
+//             return "0";
+        
+//         string ans = "";
+//         while(add > 0){
+//             ans += to_string(add%2);
+//             add = add/2;
+//         }
+        
+//         string res = "";
+//         for(int i=ans.size()-1; i>=0; i--)
+//             res = res + ans[i];
+//         return res;
+        string res;
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        while(i >= 0 || j >= 0){
+            int sum = carry;
+            if(i >= 0) sum += a[i--] - '0';
+            if(j >= 0) sum += b[j--] - '0';
+            carry = sum > 1 ? 1 : 0;
+            res += to_string(sum % 2);
+        }
+        if(carry) res += to_string(carry);
+        reverse(res.begin(), res.end());
+        return res;
+    }
