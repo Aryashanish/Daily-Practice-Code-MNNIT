@@ -1,0 +1,41 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/return-two-prime-numbers2509/1?fbclid=IwAR2a6JEX1WCWRFSeOJPRJrH5IeJgi2r1Jr5VpkP-X_xaObnPgOInL-KV_UE
+
+//Code
+class Solution{
+public:
+    int isPrime(int n){
+        for(int i=2; i<n; i++){
+            if(n%i == 0)
+                return 0;
+        }
+        return 1;
+    }
+    vector<int> primeDivision(int N){
+        // code here
+        int t;
+        vector<int> v;
+        for(int i=2; i<=N-2; i++){
+             t = N-i;
+             if(isPrime(t) && isPrime(i)){
+                 v.push_back(i);
+                 v.push_back(t);
+             }
+        }
+        return v;
+    }
+};
+
+
+//Problem Link
+https://leetcode.com/problems/sort-an-array/?fbclid=IwAR3LSyIx-2BnzBpznB__3XoENmlhoNbojfU_70apPfn6FkQrv0uASLCbv-g
+
+//Code
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        return nums;
+    }
+};
+
