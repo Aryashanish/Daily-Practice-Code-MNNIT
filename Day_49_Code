@@ -1,0 +1,64 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/ncr1019/1/?fbclid=IwAR3rbpBH8maY8I8Ydm_zQhoVqyCJQgg4659DZWQ1ZyS4U_OQKpK6w5Q4JfI#
+
+
+//Code
+class Solution{
+public:
+    int mod = (int)1e9 + 7;
+    
+    int nCr(int n, int r){
+        vector<int> dp(r+1,0);
+        dp[0] = 1;
+        for(int i=1; i<=n; i++){
+            for(int j=min(i,r); j>0; j--){
+                dp[j] = (dp[j] + dp[j-1]) % mod;
+            }
+        }
+       
+        return dp[r];
+        
+        // if(r > n)
+        //     return 0;
+        // if(n==r)
+        //     return 1;
+            
+        // // long int t1 = fact(n);
+        // // long int t2 = fact(r);
+        // // long int t3 = fact(n-r);
+        // // cout<<t1<<" "<<t2<<" "<<t3<<endl;
+        
+        // int ans = fact(n)/(fact(n-r)*fact(r));
+        // return ans;
+        // // code here
+        // if(r == 0 || n == r)
+        //     return 1;
+        // else
+        //     return nCr(n-1,r-1) + nCr(n-1,r);
+    }
+};
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/rotate-by-90-degree0356/1/?fbclid=IwAR2xquEzkjWDKTb-YxREejvYZLkkcTqiCgoHyMf3i9s8DKBH_BTj6ICmhXo#
+
+
+//Code
+void rotate(vector<vector<int> >& matrix)
+{
+    // Your code goes here
+    int temp[matrix.size()][matrix.size()];
+    int n = matrix.size()-1;
+    int i , j;
+    for(i=0; i<matrix.size(); i++){
+        for(j=0; j<matrix.size(); j++){
+            temp[i][j] = matrix[j][n-i];
+        }
+    }
+    
+    for(i=0; i<matrix.size(); i++){
+        for(j=0; j<matrix.size(); j++){
+            matrix[i][j] = temp[i][j];
+        }
+    }
+}
