@@ -1,0 +1,53 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/rearrange-an-array-with-o1-extra-space3142/1?fbclid=IwAR0MSQkzdLGZMuAs4GA8Rc8NznpXyNkj6bFhS04yr0CLGcxJ5ZSFFoTM_tA
+
+//Code
+class Solution{
+    public:
+    // arr: input array
+    // n: size of array
+    //Function to rearrange an array so that arr[i] becomes arr[arr[i]]
+    //with O(1) extra space.
+    void arrange(long long arr[], int n) {
+        // Your code here
+        long long brr[n];
+        for(int i=0; i<n; i++)
+            brr[i] = arr[arr[i]];
+            
+        for(int i=0; i<n; i++)
+            arr[i] = brr[i];
+    }
+};
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/maximum-index-1587115620/1?fbclid=IwAR0o4_bqOtdfUg6d95RsBFD3a1J7OV3lEaRT8_oOv0tC-E6Y4pxnkgcGfaA
+
+
+//Code
+class Solution{
+    public:
+        
+    // A[]: input array
+    // N: size of array
+    // Function to find the maximum index difference.
+    int maxIndexDiff(int A[], int n) 
+    { 
+        // Your code here
+        int ans = -1;
+        for (int i = 0; i < n; i++)
+        {
+            for( int j = 0; j<=i; ++j ){
+                
+                if( A[j] <= A[i] ){
+                    // cout << i-j<<"\n";
+                    ans = max( i-j, ans );
+                    break;
+                }
+    
+            }
+     
+        }
+        return ans;
+    }
+};
