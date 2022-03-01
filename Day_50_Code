@@ -1,0 +1,65 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1/?fbclid=IwAR2nDljWzjABryzkuET6zDVThTWnqUZj4xPxV1mfwYZgHVGdKMJv2eOVfAg
+
+
+//Code
+class Solution{
+    public:
+    /* Should return data of middle node. If linked list is empty, then  -1*/
+    int getMiddle(Node *head)
+    {
+        // Your code here
+        int count = 0;
+        struct Node *p = head;
+        while(p != 0)
+        {
+            count++;
+            p = p->next;
+        }
+        
+        int i = 1;
+        p = head;
+        while(i <= count/2)
+        {
+            p = p->next;
+            i++;
+        }
+        
+        return p->data;
+    }
+};
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/d6e88f06b273a60ae83992314ac514f71841a27d/1?fbclid=IwAR1ZG_oTZSiIVBySFwXA8avJGBqprEhoL8b7vraHUpRt4mZgTzPex-7MRjc
+
+
+//Code
+class Solution {
+  public:
+    int smallestSubstring(string S) {
+        if(S.length() < 3)
+            return -1;
+        // Code here
+        int zero = -1;
+        int one = -1;
+        int two = -1;
+        int ans = INT_MAX;
+        for(int i=0; i<S.length(); i++){
+            if(S[i] == '0')
+                zero = i;
+            if(S[i] == '1')
+                one = i;
+            if(S[i] == '2')
+                two = i;
+        
+            if(zero != -1 && one != -1 && two != -1){
+                ans = min(ans , max(zero , max(one , two)) - min(zero , min(one,two))+1);
+            }
+        }
+        
+        if(ans == INT_MAX)
+            return -1;
+        return ans;
+    }
+};
