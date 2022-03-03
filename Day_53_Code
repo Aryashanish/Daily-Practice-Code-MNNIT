@@ -1,0 +1,47 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/sort-by-absolute-difference-1587115621/1?fbclid=IwAR2OPBDh7hqGjUbaQOHGT4j0YRQnln0tzsVzbzfvVCfTYyuThMhK5_7D9YE#
+
+
+//Code
+void sortABS(int A[],int n, int k)
+    {
+       //Your code here
+        vector<pair<int,int>>v;
+       for(int i=0;i<n;i++){
+           v.push_back({abs(A[i]-k),i});
+       }
+       sort(v.begin(),v.end());
+       int temp[n];
+       for(int i=0;i<n;i++){
+           temp[i]=A[v[i].second];
+       }
+       for(int i=0;i<n;i++){
+           A[i]=temp[i];
+       }
+    }
+
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/find-triplets-with-zero-sum/1?fbclid=IwAR3VIGMc54OxZjo0OvXlGrx66YDDJQzjr8Pubdk-6asHhMO4uK404P4aDB8#
+
+
+//Code
+public:
+    //Function to find triplets with zero sum.
+    bool findTriplets(int arr[], int n)
+    { 
+        //Your code here
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                for(int k=j+1; k<n; k++)
+                {
+                    if(arr[i] + arr[j] + arr[k] == 0)
+                        return 1;
+                }
+            }
+        }
+        return 0;
+    }
