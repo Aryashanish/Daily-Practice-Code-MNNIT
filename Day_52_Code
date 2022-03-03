@@ -1,0 +1,36 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/amount-of-water1348/1?fbclid=IwAR0mVwQ_r840q9bmL__WZBKr95dOUi3_0nWep--R1fVA3Eki1mdsR3vbJFI
+
+
+
+//Code
+
+
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/roof-top-1587115621/1?fbclid=IwAR1i-jfu0ik4zADzsUdPNNKBqPBd0W5BPxuqGQvXsouYqimxz2XdpTGg2Wk
+
+
+
+//Code
+class Solution
+{
+    public:
+    //Function to find maximum number of consecutive steps 
+    //to gain an increase in altitude with each step.
+    int maxStep(int A[], int N)
+    {
+       //Your code here
+       int ans = 0 , step = 0;
+       for(int i=1; i<N; i++){
+            if(A[i-1] < A[i])
+                step++;
+            else{
+                ans = max(ans , step);
+                step = 0;
+            }
+       }
+       return max(ans,step);
+    }
+};
