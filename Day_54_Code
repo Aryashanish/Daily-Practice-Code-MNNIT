@@ -1,0 +1,70 @@
+//Problem Link
+https://practice.geeksforgeeks.org/problems/search-in-a-matrix-1587115621/1?fbclid=IwAR0wOlSH3azTLSGNsHiaVhK-MGdVrWriSqmZuDozT42qI9SO59DBhpbmb-4#
+
+
+
+//Code
+class Solution
+{
+    public:
+    //Function to search a given number in row-column sorted matrix.
+    bool search(vector<vector<int> > matrix, int n, int m, int x) 
+    {
+        // code here 
+        int r = 0;
+        int c = m-1;
+        while(r<n && c>=0){
+            if(matrix[r][c] == x)
+                return true;
+            else if(matrix[r][c] < x)
+                r++;
+            else
+                c--;
+        }
+        return false;
+    }
+};
+
+
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/boolean-matrix-problem-1587115620/1?fbclid=IwAR03u8VOSq43euQ9sn-buApWuy6pSAyqRNNYaRY739Rrhnu9a_65-OXFFIs#
+
+
+
+
+//Code
+class Solution
+{   
+    public:
+    //Function to modify the matrix such that if a matrix cell matrix[i][j]
+    //is 1 then all the cells in its ith row and jth column will become 1.
+    void booleanMatrix(vector<vector<int> > &matrix)
+    {
+        // code here 
+        vector<int> row;
+        vector<int> col;
+        
+        for(int i=0; i<matrix.size(); i++){
+            for(int j=0; j<matrix[0].size(); j++){
+                if(matrix[i][j] == 1){
+                    row.push_back(i);
+                    col.push_back(j);
+                }
+            }
+        }
+        
+        int r = 0;
+        while(r < row.size()){
+            for(int i=0; i<matrix[0].size(); i++)
+                matrix[row[r]][i] = 1;
+            
+            for(int j=0; j<matrix.size(); j++)
+                matrix[j][col[r]] = 1;
+                
+            r++;
+        }
+        
+    }
+};
