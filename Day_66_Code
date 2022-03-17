@@ -1,0 +1,108 @@
+//Problem Link
+https://leetcode.com/problems/counting-bits/?fbclid=IwAR2HscvpsRM76VK0l1hrzS_U6muSE9VcxlegxgAA4nwreVBDhTrwHYeJCZg
+
+
+
+
+//Code
+vector<int> countBits(int n) {
+        vector<int> v;
+        int count , temp;
+        for(int i=0; i<=n; i++){
+            count = 0;
+            temp = i;
+            while(temp > 0){
+                if(temp%2 == 1)
+                    count++;
+                
+                temp /= 2;
+            }
+            v.push_back(count);
+        }
+        return v;
+    }
+
+
+
+
+//Problem Link
+https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/?fbclid=IwAR3WWaRb_7ek-A3aCVYzGq8PUbn7fJlDXWzBssdPqbfwdgCquzd7WhyCbKI
+
+
+
+
+//Code
+ string minRemoveToMakeValid(string s) {
+//         int i=0;
+//         stack<string> st;
+//         string str = "";
+//         while(s[i] != '\0'){
+//             if(s[i] != '(' && s[i] != ')')
+//                 str = str + s[i];
+            
+//             if(s[i] == '('){
+//                 str = str + s[i];
+//                 st.push("(");
+//             }
+            
+//             if(s[i] == ')'){
+//                 if(!st.empty()){
+//                     st.pop();
+//                     str = str + ')';
+//                 }
+//             }
+            
+//             i++;
+//         }
+        
+//         int c = 0;
+//         i = 0;
+//         while(str[i] != '\0'){
+//             if(str[i] != '(')
+//                 c++;
+//             i++;
+//         }
+//         if(c == 0)
+//             return "";
+        
+//         return str;
+        stack<int> st;
+        string res = "";
+
+        for (int i = 0; i < s.length(); ++i)
+        {
+            // if we find open parenthesis push it to stack
+            if (s[i] == '(')
+                st.push(i);
+            // if we find close parenthisis check
+            // if there is a open parenthisis or the stack is empty
+            else if (s[i] == ')')
+            {
+                // if stack  is empty then we need to remove that index from string
+                // replacing it with '#' for our convenience
+                if (st.empty())
+                    s[i] = '#';
+                else
+                    // if there is an open parenthesis than remove that  from the stack
+                    st.pop();
+            }
+        }
+
+        // now , if stack is not empty that means it has open parenthesis
+        // which have no closing parenthesis.
+        // so we have to replace that index of string with '#' for our convenience
+        while (!st.empty())
+        {
+            s[st.top()] = '#';
+            st.pop();
+        }
+
+        // making the resultant string by excluding '#'
+        for (int i = 0; i < s.length(); ++i)
+        {
+            if (s[i] != '#')
+                res.push_back(s[i]);
+        }
+
+        return res;
+    }
