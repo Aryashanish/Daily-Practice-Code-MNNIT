@@ -1,0 +1,76 @@
+//Problem Link
+https://leetcode.com/problems/valid-parentheses/description/?fbclid=IwAR1SVz0YToOHl6yUlX9MH1eocaqd546kKKc2g0944lij1_EG7QepUd6iSFk
+
+
+
+//Code
+ bool isValid(string s) {
+        stack<char> stk;
+        
+        for(int i=0; s[i] != '\0'; i++){
+            if(s[i] == '(' || s[i] == '{' || s[i] == '[')
+                stk.push(s[i]);
+            if(s[i] == ')' || s[i] == '}' || s[i] == ']'){
+                if(stk.empty())
+                    return false;
+                else{
+                    if(s[i] == ')'){
+                        if(stk.top() == '(')
+                            stk.pop();
+                        else
+                            return false;
+                    }
+                    if(s[i] == '}'){
+                        if(stk.top() == '{')
+                            stk.pop();
+                        else
+                            return false;
+                    }
+                    if(s[i] == ']'){
+                        if(stk.top() == '[')
+                            stk.pop();
+                        else
+                            return false;
+                    }
+                }
+            }
+        }
+        return stk.empty() ? true : false;
+    }
+
+
+
+
+//Problem Link
+https://leetcode.com/problems/add-two-numbers/description/?fbclid=IwAR2mDzkq9_nHGcRtAvspcmnZec6Z7DjBx5CFks71UxeDVSCqPeTNACxBSyc
+
+
+
+
+//Code
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *ptr = new ListNode();     //new list;
+        ListNode *temp = ptr;
+        
+        int c = 0;
+        while(l1 != NULL || l2 != NULL || c){
+            
+            int sum = 0;
+            if(l1 != NULL){
+                sum += l1->val;
+                l1 = l1->next;
+            }
+            
+            if(l2 != NULL){
+                sum += l2->val;
+                l2 = l2->next;
+            }
+            
+            sum += c;
+            c = sum/10;
+            ListNode *t = new ListNode(sum%10);
+            temp->next = t;
+            temp = t;
+        }
+        return ptr->next;
+    }
