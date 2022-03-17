@@ -1,0 +1,54 @@
+//Problem Link
+https://leetcode.com/problems/intersection-of-two-linked-lists/?fbclid=IwAR2CbYvIHAd8winIDYlzvzYq3YTcPjWhWA-A5P7nsVvapDVlHMqyQNX_OSw
+
+
+//Code
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode *t1 = headA , *t2 = headB;
+        while(t1 != t2){
+            t1=(t1==NULL)?headB:t1->next;
+            t2=(t2==NULL)?headA:t2->next;
+        }
+        return t1;
+    }
+
+
+
+//Problem Link
+https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1?fbclid=IwAR1nXHC8FzOHk984032o2bzLaSf7Sf8qZNvD0tgEVLe2zPahVGUzU97GYUE
+
+
+
+//Code
+int maxLen(vector<int>&A, int n)
+    {   
+        // Your code here
+        // int max_len = 0;
+        // int cur_sum;
+        // for(int i=0; i<n; i++){
+        //     cur_sum = 0;
+        //     for(int j=i; j<n; j++){
+        //         cur_sum += A[j];
+                
+        //         if(cur_sum == 0)
+        //             max_len = max(max_len , j-i+1);
+        //     }
+        // }
+        // return max_len;
+        
+        
+        unordered_map<int, int> m;
+       int p = 0;
+       m.insert({0, -1});
+       int len = 0;
+       for(int i=0; i<n; i++){
+           p += A[i];
+           if(m.find(p) == m.end()){
+               m[p] = i;
+           }
+           else{
+               len = max(len, i-m[p]);
+           }
+       }
+       return len;
+    }
